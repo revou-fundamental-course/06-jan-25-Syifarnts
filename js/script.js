@@ -1,5 +1,14 @@
 // Ini file javascript
 
+//Welcome speech
+function replaceName() {
+    let greeting = prompt("Please enter your name"," ");
+    document.getElementById("greeting").innerHTML = greeting;
+    console.log(greeting);
+}
+
+replaceName();
+
 // Function to validate form
 function formValidation() {
     let nameInput = document.getElementById('name-input').value;
