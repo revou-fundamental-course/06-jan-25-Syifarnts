@@ -4,27 +4,34 @@
 function replaceName() {
     let greeting = prompt("Please enter your name"," ");
     document.getElementById("greeting").innerHTML = greeting;
-    console.log(greeting);
 }
 
 replaceName();
 
 // Function to validate form
-function formValidation() {
-    let nameInput = document.getElementById('name-input').value;
-
-    console.log(nameInput);
-    // Condition for validate form
-    if (nameInput == "") {
-        alert('Name must be filled out');
-    } else {
-        // Display result form
-        document.getElementById('result-form').innerHTML = nameInput;
+function validateForm() {
+    const name = document.forms["message-form"]["full-name"].value;
+    const birthDate = document.forms["message-form"]["birth-date"].value;
+    const gender = document.forms["message-form"]["gender"].value;
+    const messages = document.forms["message-form"]["messages"].value;
+    
+    if (name == "" || birthDate == "" || gender == "" || messages == "") {
+        alert("Form must be filled");
+        return false;
     }
+    
+    setSenderUI(name, birthDate, gender, messages);
+    return false;    
 }
 
-document.getElementById('submit-btn').addEventListener('click', formValidation);
+function setSenderUI(name, birthDate, gender, messages) {
+    document.getElementById("sender-full-name").innerHTML = name;
+    document.getElementById("sender-birth-date").innerHTML = birthDate;
+    document.getElementById("sender-gender").innerHTML = gender;
+    document.getElementById("sender-messages").innerHTML = messages;
+    }
 
+// Function to change background banner
 let indexBanner = 0;
 
 changeBackground();
@@ -34,7 +41,6 @@ function nextBanner() {
     changeBackground();
 }
 
-// Function to change background banner
 function changeBackground() {
     let bannerList = document.getElementsByClassName('banner-image');
     
